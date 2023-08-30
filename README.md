@@ -15,7 +15,7 @@ Right Click the Solution and Select (Multiple Startup Projects).
 Start Client and Server Project.
 
 ## Testing
-Run the project using Swagger to send a Prime Number Request.
+Run the project using Swagger or Postman to send a Prime Number Request.
 
 ### Swagger
 Navigate to https://localhost:7230/swagger/index.html in your browser.
