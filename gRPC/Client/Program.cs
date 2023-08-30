@@ -35,6 +35,10 @@ builder.Services.AddGrpcClient<PrimeNumberProtoStreaming.PrimeNumberProtoStreami
     server.Address = new Uri(builder.Configuration["GrpcServerUrl"]);
 }).ConfigureChannel(channel =>
 {
+    channel.HttpHandler = new SocketsHttpHandler
+    {
+        EnableMultipleHttp2Connections = true
+    };
     channel.LoggerFactory = loggerFactory;
     channel.ServiceConfig = new ServiceConfig
     {

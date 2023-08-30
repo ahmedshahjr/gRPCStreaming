@@ -15,14 +15,11 @@ namespace Server.Services
          ServerCallContext context)
         {
             var primeNumbers = new List<long>();
-            var requestId = context.RequestHeaders.Single(x => x.Key == "requestid").Value;
             var received = 0;
             // Create a timer that ticks every second
             System.Threading.Timer timer = new System.Threading.Timer(PrintPrimeNumber, primeNumbers, 0, 1000);
-
             try
             {
-
                 while (await requestStream.MoveNext())
                 {
                     received++;
@@ -48,7 +45,6 @@ namespace Server.Services
             catch (RpcException ex)
             {
                 throw;
-
             }
             finally
             {
