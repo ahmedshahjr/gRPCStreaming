@@ -3,12 +3,11 @@ using gRPC_Server_Protos;
 
 namespace Server.Services
 {
-    public class PrimeNumberService: PrimeNumberProtoStreaming.PrimeNumberProtoStreamingBase
+    public class PrimeNumberService : PrimeNumberProtoStreaming.PrimeNumberProtoStreamingBase
     {
-        private readonly ILogger _logger;
-        public PrimeNumberService(ILoggerFactory loggerFactory)
+        public PrimeNumberService()
         {
-            _logger = loggerFactory.CreateLogger<PrimeNumberService>();
+
         }
         public async override Task HasPrimerNumber(
          IAsyncStreamReader<PrimeNumberRequest> requestStream,
@@ -60,7 +59,6 @@ namespace Server.Services
         }
         private void PrintPrimeNumber(object state)
         {
-            Console.WriteLine($"outside primenumbers");
             var primeNumbers = (List<long>)state;
             if (primeNumbers.Count >= 10)
             {
@@ -70,7 +68,7 @@ namespace Server.Services
                       .Take(10)
                       .ToList();
                 var primeNumber = string.Join(",", topTenPrimeNumbers);
-                Console.WriteLine($"Top Ten Primer Numbers are {primeNumber}");
+                Console.WriteLine($"Top Ten Prime Numbers are {primeNumber}");
                 primeNumbers.Clear();
             }
         }
