@@ -1,0 +1,5 @@
+Reuse gRPC channels => using grpc client factory
+Connection concurrency => addiontal connection are created when stream limit is reached
+Load Balancing => load balancing the grpc app
+Keep alive pings => intital grpc calls are established quickly without a delay casued by connection reestablished
+binary payloads => sending small binary payloads
