@@ -1,0 +1,20 @@
+syntax = "proto3";
+option csharp_namespace = "Client_Protos";
+package PrimeNumber;
+
+service PrimeNumberProtoStreaming {
+  rpc HasPrimerNumber (stream PrimeNumberRequest) returns (stream PrimeNumberResponse);
+}
+
+message PrimeNumberRequest {
+  int64 id = 1;
+  double timestamp = 2;
+  int64 number = 3;
+}
+
+message PrimeNumberResponse {
+ int64 id=1;
+ int64 number=2;
+ double timestamp = 3;
+ bool isprimenumber =4;
+}

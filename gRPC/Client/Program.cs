@@ -1,4 +1,5 @@
 using Client.Services;
+using Client_Protos;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IPrimeNumberService, PrimeNumberService>();
+builder.Services.AddGrpcClient<PrimeNumberProtoStreaming.PrimeNumberProtoStreamingClient>(server=>{
+    server.Address = new Uri(builder.Configuration["GrpcServerUrl"]);
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

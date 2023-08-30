@@ -1,18 +1,30 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.9" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-  </ItemGroup>
+	<ItemGroup>
+	  <None Remove="Protos\prime_number.proto" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.9" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+		<PackageReference Include="Grpc.AspNetCore" Version="2.56.0" />
+		<PackageReference Include="Grpc.AspNetCore.Web" Version="2.56.0" />
+		<PackageReference Include="Grpc.Tools" Version="2.57.0"/>
+	</ItemGroup>
+	
+	<ItemGroup>
+		<Folder Include="Controllers\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Protobuf Include="Protos\prime_number.proto" GrpcServices="Server" />
+	</ItemGroup>
 
 </Project>
+	
